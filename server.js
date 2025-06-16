@@ -1,4 +1,4 @@
-//hilangkan semua komentar (di on kan) untuk create tabel di database
+
 
 import express from 'express';
 import db from './config/database.js';
