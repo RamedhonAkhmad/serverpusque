@@ -78,7 +78,7 @@ export const Login = async (req, res) => {
         const userId = user.id;
         const name = user.name;
         const role = user.role;
-        const accsessToken = jwt.sign({ userId, name, nik, role }, process.env.ACCESS_TOKEN_SECRET, {
+        const accessToken = jwt.sign({ userId, name, nik, role }, process.env.ACCESS_TOKEN_SECRET, {
             expiresIn: '20s'
         });
         const refreshToken = jwt.sign({ userId, name, nik, role }, process.env.REFRESH_TOKEN_SECRET, {
@@ -93,7 +93,7 @@ export const Login = async (req, res) => {
             httpOnly: true,
             maxAge: 24 * 60 * 60 * 1000
         });
-        res.json({ accsessToken, role });
+        res.json({ accessToken, role });
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: 'Internal server error' });
